@@ -8,7 +8,8 @@ This is still a work in progress.
 
 ## Property enumeration
 Note that *for...in* loop may iterate through prototype properties/methods, hence check with `hasOwnProperty`.
-```
+
+```javascript
 let jack = {
 	type: "human",
 	age: 15,
@@ -22,14 +23,14 @@ for ( let key in jack ) {
 }
 ```
 
-
-```
+```javascript
 // Create non-enumerable property using defineProperty
 Object.defineProperty(jack, "level", { enumerable: false, value: 25 });
 ```
 
 Using Javascript propertiesObject argument to initialize object properties:
-```
+
+```javascript
 { 
   foo: {
     enumerable: false,
@@ -47,20 +48,22 @@ Using Javascript propertiesObject argument to initialize object properties:
 }
 ```
 
-
 ## Function Declarations and Function Expressions
 1. Declaration: 
-   ```
+
+   ```javascript
    function abc () {}
    ```
 
 2. Expression:
-   ```
+
+   ```javascript
    let abc = function() {}
    ```
 
 3. Function declarations are hoisted.
-   ```
+
+   ```javascript
    function foo(){
        function bar() {
            return 3;
@@ -74,7 +77,8 @@ Using Javascript propertiesObject argument to initialize object properties:
    ```
 
 4. Function expressions are also hoisted, but follow the rules of **let, const** and **var**.
-   ```
+
+   ```javascript
    function foo(){
        var bar = function() {
            return 3;
@@ -86,6 +90,7 @@ Using Javascript propertiesObject argument to initialize object properties:
    }
    alert(foo()); // 3
    ```
+   
    In this case, declaration for `bar` is hoisted up **twice**. 
    However, once code execution starts, the return statement prevents the next assignment from being executed.
 
@@ -103,7 +108,7 @@ Using Javascript propertiesObject argument to initialize object properties:
 
 Class declarations are not hoisted.
 
-```
+```javascript
 class Rectangle {
 	constructor(width, height) {
 		this.width = width;
@@ -127,7 +132,7 @@ console.log(square.area);
 
 ## Prototypal Inheritance
 
-```
+```javascript
 let Species = function(legs) {
 	this.legs = legs; 	
 	this.height = 0;	
