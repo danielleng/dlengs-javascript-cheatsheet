@@ -2,11 +2,11 @@
 My own Javascript cheatsheet for recalling Javascript's features and all its little nuances. Feel free to use it for your own reference.
 
 
-### Note
+#### Note
 This is still a work in progress.
 
 
-## Property enumeration
+## Property Enumeration
 Note that *for...in* loop may iterate through prototype properties/methods, hence check with `hasOwnProperty`.
 
 ```javascript
@@ -148,9 +148,32 @@ dave.name = "Alex";
 ```
 
 
-## Execution contexts, the stack and Lexical Environment
+## Execution contexts and Lexical Environment
+
+More information available from https://medium.freecodecamp.com/lets-learn-javascript-closures-66feb44f6a44
 
 1. Each function execution creates a new Execution Context.
-2. Execution Contexts work like a stack, LIFO. (last in first out)
-3. Each Execution Context has a few features, e.g. Lexical Environment and Variable Environment. (Or just "Environment")
+2. Execution Contexts work like a stack, LIFO. (last in first out) We can see this in Chrome Dev Tool's callstack tab.
+3. Each Execution Context has a few components, e.g. Lexical Environment and Variable Environment. (Or just "Environment")
+4. Lexical Environment is a component used to define the association between identifiers and variables/functions based on the lexical nesting structure of ECMAScript code.
+5. Additionally, the Lexical Environment has a reference to the outer Lexical Environment. (e.g. a function within a function, where inner function has reference to outer function's variables)
+6. A new Lexical Environment is created each time a function is called, or code execution enters a block statement.
 
+## Scope Chains
+
+1. As per Lexical Environments discussed above, each Lexical Environment has access to its outer Environment. This set of identifiers that each environment has access to is called “scope.” We can nest scopes into a hierarchical chain of environments known as the “scope chain”.
+2. This scope chain, or chain of environments associated with a function, is saved to the function object at the time of its creation. In other words, it’s defined statically by location within the source code. (This is also known as “lexical scoping”.)
+
+
+## Closures
+
+```javascript
+let j = function() {
+    let b = "hi";
+    return function() { console.log(b); }
+}
+
+j()();  // hi
+```
+
+## 
