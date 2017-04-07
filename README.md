@@ -176,4 +176,31 @@ let j = function() {
 j()();  // hi
 ```
 
-## 
+## Arrays
+
+1. Converting arguments object to an array:
+    `var args = Array.prototype.slice.call(arguments);`
+    
+
+## Currying Functions
+
+1. Currying is constructing new functions from existing ones that allows partial application of the original function's arguments.
+2. When creating a curried function, the curryer can accept some of the original function's arguments, and return a function that accepts the remaining arguments, and still return the same result when executed. 
+3. Curryer:
+
+    ```javascript
+    const curryer = function(uncurried) {
+        let args = Array.prototype.slice.call(arguments, 1);
+        return function() {
+            return uncurried.apply(this, args.concat(Array.prototype.slice.call(arguments, 0)));
+        }
+    }
+    
+    function otherFunction(arg1, arg2, arg3) {
+        alert(arg1 + " " + arg2 + " " + arg3);
+    }
+    
+    let curriedFunction = curryer(otherFunction, arg1, arg2);
+    ```
+    
+4. 
