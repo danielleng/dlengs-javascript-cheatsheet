@@ -181,6 +181,13 @@ j()();  // hi
 1. Converting arguments object to an array:
     `var args = Array.prototype.slice.call(arguments);`
     
+## Falsey Values
+
+1. There are only 6 falsey values in Javascript:
+```
+undefined, null, NaN, 0, "", false
+```
+
 
 ## Currying Functions
 
